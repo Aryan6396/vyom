@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Weather's update</title>
+  </head>
+  <body style="background-color: #D4DCCD;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="font-weight: bold"
+          ><i class="fa-solid fa-sun"></i> Vyom</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          ></ul>
+          <form class="d-flex">
+            <input
+              id="city"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit" id="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container" style="margin-top: 30px">
+      <h1 class="my-4 text-center">Weather of <span id="cityName"></span></h1>
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3 p-3 mb-2 bg-secondary text-white">
+                <h4 class="my-0 fw-normal bg-#FFE8E1" >
+                  Temperature <i class="fa-solid fa-sun"></i>
+                </h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="temperature2"></span
+                  ><small class="text-body-secondary fw-light"> &#8451;</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>
+                    Description <i class="fa-solid fa-circle-info"></i>
+                    <span id="description"></span>
+                  </li>
+                  <li>
+                    Temperature <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-cloud"></i>
+                    <span id="temperature"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3 p-3 mb-2 bg-secondary text-white">
+                <h4 class="my-0 fw-normal">
+                  Humidity Info <i class="fa-solid fa-droplet"></i>
+                </h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="humidity2"></span
+                  ><small class="text-body-secondary fw-light"> %</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>
+                    Humidity <i class="fa-solid fa-droplet"></i>
+                    <span id="humidity"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 ">
+              <div class="card-header py-3 text-bg-primary  p-3 mb-2 bg-secondary text-white">
+                <h4 class="my-0 fw-normal">
+                  Wind Info <i class="fa-solid fa-water"></i>
+                </h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="wind_speed2"></span
+                  ><small class="text-body-secondary fw-light"> km/h</small>
+                </h1>
+
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>
+                    Wind_speed <i class="fa-solid fa-wind"></i>
+                    <span id="wind_speed"></span>
+                  </li>
+                  <div style="color: white">.</div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="display-6 text-center mb-4">
+          Weather of other common places
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th style="width: 34%"></th>
+                <th style="width: 13%">Description</th>
+                <th style="width: 13%">Humidity</th>
+                <th style="width: 13%">Temperature</th>
+                <th style="width: 13%">Wind_speed</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Goa</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Lucknow</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Mumbai</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Gurugram</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
