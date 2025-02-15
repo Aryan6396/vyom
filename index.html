@@ -21,6 +21,24 @@
     />
 
     <title>Weather's update</title>
+    <style>
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .spinner-border {
+        display: none;
+      }
+      .col {
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+      }
+      .card {
+        height: 100%; /* Make cards take up full height of the column */
+        width: 100%; /* Make cards take up full width of the column */
+      }
+    </style>
   </head>
   <body style="background-color: #D4DCCD;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,12 +81,17 @@
 
     <div class="container" style="margin-top: 30px">
       <h1 class="my-4 text-center">Weather of <span id="cityName"></span></h1>
+      <div class="text-center">
+        <div class="spinner-border" role="status" id="loadingSpinner">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <main>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div class="col">
             <div class="card mb-4 rounded-3 shadow-sm">
               <div class="card-header py-3 p-3 mb-2 bg-secondary text-white">
-                <h4 class="my-0 fw-normal bg-#FFE8E1" >
+                <h4 class="my-0 fw-normal bg-#FFE8E1">
                   Temperature <i class="fa-solid fa-sun"></i>
                 </h4>
               </div>
@@ -79,13 +102,40 @@
                 </h1>
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>
-                    Description <i class="fa-solid fa-circle-info"></i>
+                    Description
+                    <i class="fa-solid fa-circle-info"></i>
                     <span id="description"></span>
                   </li>
                   <li>
-                    Temperature <i class="fa-solid fa-sun"></i>
+                    Temperature
+                    <i class="fa-solid fa-sun"></i>
                     <i class="fa-solid fa-cloud"></i>
                     <span id="temperature"></span>
+                  </li>
+                  <li>
+                    Feels Like
+                    <i class="fa-solid fa-thermometer-half"></i>
+                    <span id="feelslike"></span>
+                  </li>
+                  <li>
+                    Dew Point
+                    <i class="fa-solid fa-tint"></i>
+                    <span id="dewpoint"></span>
+                  </li>
+                  <li>
+                    Pressure
+                    <i class="fa-solid fa-tachometer-alt"></i>
+                    <span id="pressure"></span>
+                  </li>
+                  <li>
+                    UV Index
+                    <i class="fa-solid fa-sun"></i>
+                    <span id="uv"></span>
+                  </li>
+                  <li>
+                    Visibility
+                    <i class="fa-solid fa-eye"></i>
+                    <span id="visibility"></span>
                   </li>
                 </ul>
               </div>
@@ -105,16 +155,47 @@
                 </h1>
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>
-                    Humidity <i class="fa-solid fa-droplet"></i>
+                    Humidity
+                    <i class="fa-solid fa-droplet"></i>
                     <span id="humidity"></span>
+                  </li>
+                  <li>
+                    Country
+                    <i class="fa-solid fa-flag"></i>
+                    <span id="country"></span>
+                  </li>
+                  <li>
+                    Latitude
+                    <i class="fa-solid fa-map-marker-alt"></i>
+                    <span id="latitude"></span>
+                  </li>
+                  <li>
+                    Longitude
+                    <i class="fa-solid fa-map-marker-alt"></i>
+                    <span id="longitude"></span>
+                  </li>
+                  <li>
+                    Region
+                    <i class="fa-solid fa-map"></i>
+                    <span id="region"></span>
+                  </li>
+                  <li>
+                    Local Time
+                    <i class="fa-solid fa-clock"></i>
+                    <span id="localtime"></span>
+                  </li>
+                  <li>
+                    Time Zone
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="timezone"></span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card mb-4 ">
-              <div class="card-header py-3 text-bg-primary  p-3 mb-2 bg-secondary text-white">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3 p-3 mb-2 bg-secondary text-white">
                 <h4 class="my-0 fw-normal">
                   Wind Info <i class="fa-solid fa-water"></i>
                 </h4>
@@ -124,13 +205,22 @@
                   <span id="wind_speed2"></span
                   ><small class="text-body-secondary fw-light"> km/h</small>
                 </h1>
-
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>
-                    Wind_speed <i class="fa-solid fa-wind"></i>
+                    Wind Speed
+                    <i class="fa-solid fa-wind"></i>
                     <span id="wind_speed"></span>
                   </li>
-                  <div style="color: white">.</div>
+                  <li>
+                    Wind Direction
+                    <i class="fa-solid fa-compass"></i>
+                    <span id="wind_direction"></span>
+                  </li>
+                  <li>
+                    Gust Speed
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="gust_speed"></span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -145,18 +235,17 @@
           <table class="table text-center">
             <thead>
               <tr>
-                <th style="width: 34%"></th>
+                <th class="text-start">City</th>
                 <th style="width: 13%">Description</th>
                 <th style="width: 13%">Humidity</th>
                 <th style="width: 13%">Temperature</th>
-                <th style="width: 13%">Wind_speed</th>
+                <th style="width: 13%">Wind Speed</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
                 <th scope="row" class="text-start">Goa</th>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -168,7 +257,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
               </tr>
               <tr>
                 <th scope="row" class="text-start">Mumbai</th>
@@ -176,11 +264,30 @@
                 <td></td>
                 <td></td>
                 <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Delhi</th>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
               </tr>
               <tr>
-                <th scope="row" class="text-start">Gurugram</th>
+                <th scope="row" class="text-start">Chennai</th>
                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Bangalore</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Hyderabad</th>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -191,6 +298,16 @@
         </div>
       </main>
     </div>
+
+    <footer class="text-center mt-4">
+      <p>
+        <strong>About This Weather App:</strong> This application provides
+        current weather information for various cities. The data includes
+        temperature, humidity, wind speed, and more. Weather data is sourced
+        from reliable weather APIs to ensure accuracy. &copy; 2025 Vyom Weather
+        Updates. All rights reserved.
+      </p>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
