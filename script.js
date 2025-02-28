@@ -1,4 +1,4 @@
-const url = 'http://api.weatherapi.com/v1/current.json';
+const url = 'https://api.weatherapi.com/v1/current.json';
 const options = {
     method: 'GET',
     headers: {
